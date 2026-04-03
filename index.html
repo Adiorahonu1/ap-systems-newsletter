@@ -288,6 +288,68 @@
     }
 
     /* ============================================================
+       ROOF REPAIR OFFER BANNER
+       ============================================================ */
+    .roof-banner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-top: 3px solid var(--orange);
+      border-bottom: 3px solid var(--orange);
+      padding: 22px 0;
+    }
+    .roof-banner__inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .roof-banner__icon {
+      font-size: 2.8rem;
+      flex-shrink: 0;
+    }
+    .roof-banner__copy { flex: 1; }
+    .roof-banner__headline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+    .roof-banner__headline span { color: var(--orange); }
+    .roof-banner__sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+    }
+    .roof-banner__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--orange);
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .roof-banner__btn:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 480px) {
+      .roof-banner__inner { flex-direction: column; text-align: center; gap: 14px; }
+      .roof-banner__icon { font-size: 2rem; }
+      .roof-banner__headline { font-size: 15px; }
+      .roof-banner__btn { width: 100%; justify-content: center; }
+    }
+
+    /* ============================================================
        AGENT PROFILE CARD
        ============================================================ */
     .agent-section {
@@ -1312,9 +1374,25 @@
   </div>
 
   <!-- ============================================================
+       ROOF REPAIR OFFER BANNER
+       ============================================================ -->
+  <div class="roof-banner">
+    <div class="container">
+      <div class="roof-banner__inner">
+        <div class="roof-banner__icon">🏠</div>
+        <div class="roof-banner__copy">
+          <p class="roof-banner__headline">We Also Cover Free Roof Repairs for Qualified Homeowners</p>
+          <p class="roof-banner__sub">Before we install your solar panels, we fix your roof at no cost to you. Fill out the form below to see if you qualify.</p>
+        </div>
+        <a href="#form-section" class="roof-banner__btn">See If I Qualify &darr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
        AGENT PROFILE CARD
        ============================================================ -->
-  <section class="agent-section">
+  <section class="agent-section" id="form-section">
     <div class="container">
       <div class="agent-card">
         <div class="agent-card__header">
