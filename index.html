@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no">
+  <title>Find Out in 30 Secs If You Qualify for Free Sunrun Solar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    /* ============================================================
+       CLIENT CONFIGURATION
+       ============================================================ */
+    const CONFIG = {
+      CLIENT_NAME:         "New Jersey & New York",
+      CLIENT_OFFER:        "Free Sunrun Solar Installation",
+      BRAND_COLOR_PRIMARY: "#F76900",
+      BRAND_COLOR_BUTTON:  "#F76900",
+      BRAND_COLOR_LINK:    "#E55F00",
+      BRAND_COLOR_FOOTER:  "#111827",
+
+      BREAKING_NEWS_LABEL: "Breaking News",
+      FORM_SUBHEADING:     "Complete this 30-second form — Michael will personally review your eligibility",
+
+      DISQUALIFY_MESSAGE:  "Unfortunately, you need to be a homeowner to qualify for Sunrun's free solar program. If your situation changes, reach out to Michael directly.",
+      THANKYOU_HEADING:    "You're Pre-Qualified!",
+      THANKYOU_MESSAGE:    "Michael Edwin will personally reach out within 24 hours to walk you through your custom Sunrun proposal — at no cost or obligation.",
+
+      FOOTER_DISCLAIMER:   "This page is operated by Michael Edwin, an authorized Sunrun Energy Consultant Manager. Sunrun is America's #1 residential solar & battery storage company with 1,000,000+ customers served since 2007. Results vary based on location, roof condition, and utility rates. Subject to site assessment and credit approval. Federal and state incentives subject to change. This is not a government program.",
+      FOOTER_COPYRIGHT:    `© ${new Date().getFullYear()} Sunrun Inc. All Rights Reserved. | michael.edwin@sunrun.com`,
+
+      AGENT_NAME:     "Michael Edwin",
+      AGENT_TITLE:    "Energy Consultant Manager",
+      AGENT_EMAIL:    "michael.edwin@sunrun.com",
+      AGENT_PHONE:    "+1 (973) 368-3490",
+      AGENT_PROFILE:  "https://viewmycard.io/Michaeledwin",
+      AGENT_REFERRAL: "https://sunrun.secure.force.com/purl/?srep=/michaeledwin",
+      AGENT_TAGLINE:  "I help homeowners beat their utility bill with solar.",
+
+      BILL_OPTIONS: ["Under $100/mo", "$100\u2013$200/mo", "$200\u2013$300/mo", "$300+/mo"],
+    };
+  </script>
+
+  <style>
+    :root {
+      --orange:      #F76900;
+      --orange-dark: #C95500;
+      --orange-glow: rgba(247, 105, 0, 0.15);
+      --navy:        #111827;
+      --navy-mid:    #1f2937;
+      --text:        #374151;
+      --text-dark:   #111827;
+      --text-light:  #6b7280;
+      --placeholder: #9ca3af;
+      --border:      #d1d5db;
+      --bg-light:    #fafafa;
+      --white:       #ffffff;
+      --red:         #dc2626;
+      --green:       #16a34a;
+      --green-light: #dcfce7;
+      --radius:      8px;
+      --radius-lg:   14px;
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md:   0 4px 20px rgba(0,0,0,0.09);
+      --shadow-lg:   0 10px 40px rgba(0,0,0,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', 'Lato', sans-serif;
+      color: var(--text);
+      background: #f9fafb;
+      overflow-x: hidden;
+    }
+
+    /* ---- Layout ---- */
+    .container {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ============================================================
+       TOP HEADER BAR
+       ============================================================ */
+    .top-bar {
+      background: var(--navy);
+      padding: 10px 0;
+    }
+    .top-bar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .top-bar__logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+    .top-bar__logo span { color: var(--orange); }
+    .top-bar__badge {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--orange);
+      background: rgba(247, 105, 0, 0.12);
+      border: 1px solid rgba(247, 105, 0, 0.3);
+      padding: 4px 10px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       STAT IMAGE BAR (replaces placeholder images)
+       ============================================================ */
+    .stat-bar {
+      background: var(--white);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0;
+    }
+    .stat-bar .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      gap: 6px;
+      border-right: 1px solid #e5e7eb;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card:last-child { border-right: none; }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+    }
+    .stat-card__icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+    .stat-card__number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .stat-card__label {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      background: var(--white);
+      padding: 44px 0 32px;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff3e8;
+      border: 1px solid #fcd8b2;
+      border-radius: 99px;
+      padding: 6px 16px;
+      margin-bottom: 18px;
+    }
+    .hero__eyebrow-dot {
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.7); }
+    }
+    .hero__eyebrow-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero__breaking {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .hero__breaking strong {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .hero__headline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 58px;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+      margin-bottom: 22px;
+      padding: 0 20px;
+      letter-spacing: -1px;
+    }
+    .hero__headline .highlight {
+      color: var(--orange);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero__cta-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      padding: 12px 28px;
+      border-radius: 6px;
+    }
+    .hero__cta-strip .arrow {
+      color: var(--orange);
+      font-size: 20px;
+    }
+
+    /* ============================================================
+       TRUST BAR
+       ============================================================ */
+    .trust-bar {
+      background: var(--navy);
+      padding: 14px 0;
+    }
+    .trust-bar .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+    .trust-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    .trust-pill:last-child { border-right: none; }
+    .trust-pill__icon { font-size: 1.1rem; flex-shrink: 0; }
+    .trust-pill__text {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       AGENT PROFILE CARD
+       ============================================================ */
+    .agent-section {
+      padding: 32px 0 0;
+    }
+    .agent-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    .agent-card__header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .agent-avatar {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+      border: 3px solid rgba(255,255,255,0.2);
+    }
+    .agent-info { flex: 1; }
+    .agent-consultant-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+    .agent-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.1;
+    }
+    .agent-title-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-top: 2px;
+    }
+    .agent-stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .star-icons { color: #fbbf24; font-size: 14px; letter-spacing: 1px; }
+    .star-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+    .agent-verified-badge {
+      background: rgba(247,105,0,0.15);
+      border: 1px solid rgba(247,105,0,0.35);
+      border-radius: 6px;
+      padding: 6px 10px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .agent-verified-badge__icon { font-size: 1.4rem; display: block; }
+    .agent-verified-badge__text {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+
+    .agent-card__body {
+      padding: 16px 24px 20px;
+    }
+    .agent-tagline {
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 14px;
+      border-left: 3px solid var(--orange);
+      padding-left: 10px;
+    }
+    .agent-reviews {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .review-chip {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+    }
+    .review-chip__stars { color: #fbbf24; font-size: 11px; margin-bottom: 4px; }
+    .review-chip__text {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+    .review-chip__name {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .agent-contact {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .agent-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .agent-contact-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .agent-contact-btn.phone {
+      background: var(--orange);
+      color: white;
+    }
+    .agent-contact-btn.email {
+      background: var(--navy);
+      color: white;
+    }
+    .agent-contact-btn.profile {
+      background: #f3f4f6;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ============================================================
+       BEFORE / AFTER — HERO VERSION (top of page)
+       ============================================================ */
+    .before-after--hero {
+      padding: 0;
+      border: none;
+      background: var(--navy);
+    }
+    .ba-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      align-items: stretch;
+      max-height: 480px;
+      overflow: hidden;
+    }
+    .ba-card--hero {
+      position: relative;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: hidden;
+    }
+    .ba-card--hero img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88);
+      transition: filter 0.3s;
+    }
+    .ba-card--hero:hover img { filter: brightness(0.96); }
+
+    .ba-overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 0; right: 0;
+      text-align: center;
+      pointer-events: none;
+    }
+    .ba-overlay__stat {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      letter-spacing: -1px;
+    }
+    .ba-overlay__stat span {
+      font-size: 18px;
+      font-weight: 600;
+      opacity: 0.85;
+    }
+    .ba-overlay__label {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.8);
+      margin-top: 4px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    }
+    .ba-overlay--before .ba-overlay__stat { color: #fca5a5; }
+    .ba-overlay--after  .ba-overlay__stat { color: #86efac; }
+
+    .ba-divider {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      position: relative;
+    }
+    .ba-divider__circle {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 4px rgba(247,105,0,0.2);
+      letter-spacing: 0.03em;
+    }
+
+    .ba-hero-caption {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 12px 20px;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      border-bottom: 2px solid var(--orange);
+    }
+    .ba-hero-caption strong {
+      color: white;
+      font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+      .ba-hero-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 32px 1fr;
+        max-height: none;
+      }
+      .ba-card--hero img { height: 220px; }
+      .ba-divider {
+        height: 32px;
+        flex-direction: row;
+      }
+      .ba-overlay__stat { font-size: 30px; }
+    }
+
+    /* ============================================================
+       BEFORE / AFTER SECTION
+       ============================================================ */
+    .before-after {
+      padding: 48px 0;
+      background: var(--white);
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .before-after__heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .before-after__sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .before-after__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .ba-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .ba-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .ba-label {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .ba-label.before {
+      background: #dc2626;
+      color: white;
+    }
+    .ba-label.after {
+      background: var(--orange);
+      color: white;
+    }
+    .ba-caption {
+      padding: 16px 18px;
+      background: var(--white);
+      border-top: 1px solid #f3f4f6;
+    }
+    .ba-caption__title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .ba-caption__detail {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    .ba-caption__stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .ba-caption__stat.red  { color: #dc2626; }
+    .ba-caption__stat.green { color: #16a34a; }
+    .ba-caption__stat span {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+    .ba-arrow {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .before-after__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .before-after__heading { font-size: 22px; }
+      .before-after { padding: 32px 0; }
+    }
+
+    /* ============================================================
+       FORM SECTION
+       ============================================================ */
+    .form-section {
+      padding: 0 0 60px;
+      background: linear-gradient(180deg, #fff8f2 0%, #ffffff 60%);
+    }
+
+    /* Section intro header */
+    .form-intro {
+      text-align: center;
+      padding: 40px 20px 32px;
+    }
+    .form-intro__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #fff3e8;
+      border: 1px solid #fcd8b2;
+      border-radius: 99px;
+      padding: 5px 14px;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 14px;
+    }
+    .form-intro__heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .form-intro__sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      color: var(--text-light);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .form-wrapper {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ---- Step dots progress ---- */
+    .progress-bar-wrap {
+      margin-bottom: 24px;
+    }
+    .step-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 8px;
+    }
+    .step-dot {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 2px solid #e5e7eb;
+      background: white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #d1d5db;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .step-dot.active {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 0 0 3px rgba(247,105,0,0.2);
+      transform: scale(1.15);
+    }
+    .step-dot.done {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: white;
+      transform: scale(1);
+    }
+    .step-dot.done::after {
+      content: '✓';
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .step-dot.done span { display: none; }
+    .step-connector {
+      height: 2px;
+      flex: 1;
+      background: #e5e7eb;
+      transition: background 0.3s;
+      max-width: 20px;
+    }
+    .step-connector.done { background: var(--orange); }
+    .progress-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* ---- Slide viewport ---- */
+    .slide-viewport {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      width: 100%;
+      display: none;
+    }
+    .slide.is-active {
+      display: block;
+    }
+
+    /* ---- Slide card ---- */
+    .slide__card {
+      background: var(--white);
+      border: 1px solid #f0ebe5;
+      border-top: 4px solid var(--orange);
+      border-radius: var(--radius-lg);
+      padding: 32px 32px 28px;
+      box-shadow: 0 8px 40px rgba(247,105,0,0.08), 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .slide__step-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .slide__question {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 22px;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    /* ---- Radio option tiles ---- */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .options-grid.single-col { grid-template-columns: 1fr; }
+
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background: #fafafa;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text);
+      transition: all 0.18s ease;
+      text-align: left;
+      user-select: none;
+      width: 100%;
+    }
+    .option-btn:hover {
+      border-color: var(--orange);
+      background: #fff8f3;
+      color: var(--text-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(247,105,0,0.1);
+    }
+    .option-btn.selected {
+      border-color: var(--orange);
+      background: linear-gradient(135deg, #fff8f3 0%, #fff3e8 100%);
+      color: var(--text-dark);
+      font-weight: 700;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(247,105,0,0.18);
+    }
+
+    .radio-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid #d1d5db;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.18s ease;
+      background: white;
+    }
+    .option-btn:hover .radio-dot { border-color: var(--orange); }
+    .option-btn.selected .radio-dot {
+      border-color: var(--orange);
+      background: var(--orange);
+    }
+    .option-btn.selected .radio-dot::after {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    /* ---- Text inputs ---- */
+    .input-group { display: flex; flex-direction: column; gap: 8px; }
+    .input-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .slide-input {
+      width: 100%;
+      padding: 15px 18px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dark);
+      background: #fafafa;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    .slide-input::placeholder { color: var(--placeholder); }
+    .slide-input:focus {
+      border-color: var(--orange);
+      background: white;
+      box-shadow: 0 0 0 4px var(--orange-glow);
+    }
+    .field-error {
+      font-size: 12px;
+      color: var(--red);
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+    .field-error.visible { display: flex; }
+
+    /* ---- Privacy note ---- */
+    .form-privacy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      color: var(--text-light);
+    }
+    .form-privacy__icon { font-size: 13px; }
+
+    /* ---- Nav buttons ---- */
+    .slide-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      gap: 10px;
+    }
+    .nav-btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      height: 46px;
+      min-width: 100px;
+      padding: 0 22px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      letter-spacing: 0.02em;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(247,105,0,0.3);
+    }
+    .nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .nav-btn.btn-back {
+      background: transparent;
+      color: var(--text-light);
+      border: 2px solid #e5e7eb;
+      min-width: 80px;
+    }
+    .nav-btn.btn-back:hover { background: #f9fafb; color: var(--text); transform: none; box-shadow: none; border-color: #d1d5db; }
+    .nav-btn.btn-next-full {
+      flex: 1;
+      height: 50px;
+      font-size: 15px;
+    }
+    .nav-btn.btn-submit {
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      flex: 1;
+      height: 54px;
+      font-size: 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(22,163,74,0.25);
+    }
+    .nav-btn.btn-submit:hover:not(:disabled) {
+      background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+      box-shadow: 0 8px 24px rgba(22,163,74,0.35);
+      transform: translateY(-2px);
+    }
+    .nav-spacer { min-width: 80px; }
+
+    /* ============================================================
+       DISQUALIFY
+       ============================================================ */
+    .disqualify-box {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      background: #fef2f2;
+      border: 2px solid #fca5a5;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    .disqualify-box.visible { display: block; }
+    .disqualify-box__icon { font-size: 3rem; margin-bottom: 14px; }
+    .disqualify-box__heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--red); margin-bottom: 10px;
+    }
+    .disqualify-box__text {
+      font-family: 'Lato', sans-serif;
+      font-size: 15px; color: var(--text); line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .disqualify-box__contact {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px; color: var(--text-light);
+    }
+    .disqualify-box__contact a { color: var(--orange); text-decoration: none; font-weight: 700; }
+
+    /* ============================================================
+       THANK YOU
+       ============================================================ */
+    .thankyou-box {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 44px 32px;
+      background: var(--white);
+      border: 2px solid #86efac;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .thankyou-box.visible {
+      display: block;
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .thankyou-box__icon { font-size: 3.5rem; margin-bottom: 16px; }
+    .thankyou-box__heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px; font-weight: 800;
+      color: var(--green); margin-bottom: 12px;
+    }
+    .thankyou-box__text {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px; color: var(--text); line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .thankyou-divider {
+      border: none; border-top: 1px solid #e5e7eb;
+      margin: 20px 0;
+    }
+    .thankyou-contact-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .thankyou-contact-grid {
+      display: flex; flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .thankyou-contact-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.12s;
+    }
+    .thankyou-contact-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .thankyou-contact-btn.phone { background: var(--orange); color: white; }
+    .thankyou-contact-btn.email { background: var(--navy); color: white; }
+    .thankyou-contact-btn.profile { background: #f3f4f6; color: var(--text); border: 1px solid var(--border); }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 32px 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .site-footer__logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px; font-weight: 800;
+      color: white; margin-bottom: 14px;
+    }
+    .site-footer__logo span { color: var(--orange); }
+    .site-footer p {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px; line-height: 1.75;
+      max-width: 780px;
+      margin: 0 auto 10px;
+      padding: 0 20px;
+    }
+    .site-footer__links {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .site-footer__links a {
+      color: var(--orange);
+      font-family: 'Lato', sans-serif;
+      font-size: 12px; font-weight: 700;
+      text-decoration: none;
+    }
+    .site-footer__links a:hover { text-decoration: underline; }
+    .site-footer__sep { color: rgba(255,255,255,0.2); }
+
+    /* ============================================================
+       SPINNER
+       ============================================================ */
+    .spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE
+       ============================================================ */
+    @media (max-width: 480px) {
+      .container { max-width: 380px; }
+
+      .top-bar__logo { font-size: 18px; }
+
+      .stat-card__number { font-size: 20px; }
+      .stat-card__label { font-size: 10px; }
+      .stat-card { padding: 16px 8px; }
+
+      .hero { padding: 28px 0 22px; }
+      .hero__breaking { font-size: 20px; }
+      .hero__headline { font-size: 26px; padding: 0 8px; letter-spacing: -0.5px; }
+      .hero__cta-strip { font-size: 14px; padding: 10px 16px; }
+
+      .trust-bar .container { grid-template-columns: repeat(2, 1fr); }
+      .trust-pill { padding: 8px 6px; }
+      .trust-pill__text { font-size: 10px; }
+
+      .agent-card__header { flex-wrap: wrap; gap: 12px; }
+      .agent-avatar { width: 48px; height: 48px; font-size: 16px; }
+      .agent-name { font-size: 17px; }
+      .agent-reviews { grid-template-columns: 1fr; }
+
+      .slide__card { padding: 20px 16px 18px; }
+      .slide__question { font-size: 16px; }
+      .options-grid { grid-template-columns: 1fr; gap: 8px; }
+      .option-btn { padding: 12px 12px; font-size: 14px; }
+
+      .nav-btn { min-width: 72px; font-size: 13px; height: 40px; }
+      .nav-btn.btn-submit { min-width: 160px; font-size: 13px; }
+
+      .thankyou-contact-grid { flex-direction: column; align-items: center; }
+      .thankyou-contact-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP HEADER BAR
+       ============================================================ -->
+  <header class="top-bar">
+    <div class="container">
+      <div class="top-bar__logo">sun<span>run</span></div>
+      <div class="top-bar__badge">America's #1 Solar Company</div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       BEFORE / AFTER — TOP HERO VISUAL
+       ============================================================ -->
+  <section class="before-after before-after--hero">
+    <div class="ba-hero-grid">
+
+      <div class="ba-card ba-card--hero">
+        <div class="ba-label before">Before</div>
+        <img src="images/house-before.jpg" alt="Home before solar — high electricity bills">
+        <div class="ba-overlay ba-overlay--before">
+          <div class="ba-overlay__stat">$250<span>/mo</span></div>
+          <div class="ba-overlay__label">Avg. Electric Bill</div>
+        </div>
+      </div>
+
+      <div class="ba-divider">
+        <div class="ba-divider__circle">VS</div>
+      </div>
+
+      <div class="ba-card ba-card--hero">
+        <div class="ba-label after">After</div>
+        <img src="images/house-after.jpg" alt="Home after Sunrun solar — low electricity bills">
+        <div class="ba-overlay ba-overlay--after">
+          <div class="ba-overlay__stat">$0–$30<span>/mo</span></div>
+          <div class="ba-overlay__label">With Sunrun Solar</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="ba-hero-caption">
+      <strong>Same home. Same neighborhood.</strong> Completely different energy bill.
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STAT BAR
+       ============================================================ -->
+  <section class="stat-bar">
+    <div class="container">
+      <div class="stat-card">
+        <div class="stat-card__icon">👥</div>
+        <div class="stat-card__number">1M+</div>
+        <div class="stat-card__label">Customers Served</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">🏆</div>
+        <div class="stat-card__number">#1</div>
+        <div class="stat-card__label">In U.S. Home Solar & Storage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">🔧</div>
+        <div class="stat-card__number">25yr</div>
+        <div class="stat-card__label">Warranty &amp; Free Monitoring</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__eyebrow">
+        <div class="hero__eyebrow-dot"></div>
+        <span class="hero__eyebrow-text" id="hero-eyebrow-text">Breaking News</span>
+      </div>
+      <p class="hero__breaking" id="hero-breaking">
+        <strong>Breaking News</strong> &mdash; <span id="hero-client-name"></span> Homeowners
+      </p>
+      <h1 class="hero__headline">
+        Find Out in 30 Seconds If You&rsquo;re Eligible for a<br>
+        <span class="highlight" id="hero-offer"></span>
+      </h1>
+      <div class="hero__cta-strip">
+        <span id="hero-cta-bar"></span>
+        <span class="arrow">&#9660;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUST BAR
+       ============================================================ -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-pill">
+        <span class="trust-pill__icon">🏆</span>
+        <span class="trust-pill__text">America's #1 Solar Company</span>
+      </div>
+      <div class="trust-pill">
+        <span class="trust-pill__icon">👥</span>
+        <span class="trust-pill__text">1 Million+ Customers</span>
+      </div>
+      <div class="trust-pill">
+        <span class="trust-pill__icon">⭐</span>
+        <span class="trust-pill__text">A+ BBB Rating</span>
+      </div>
+      <div class="trust-pill">
+        <span class="trust-pill__icon">🔧</span>
+        <span class="trust-pill__text">25-Year Warranty Included</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       AGENT PROFILE CARD
+       ============================================================ -->
+  <section class="agent-section">
+    <div class="container">
+      <div class="agent-card">
+        <div class="agent-card__header">
+          <div class="agent-avatar" id="agent-avatar">ME</div>
+          <div class="agent-info">
+            <div class="agent-consultant-label">Your Sunrun Consultant</div>
+            <div class="agent-name" id="agent-name-display"></div>
+            <div class="agent-title-text" id="agent-title-display"></div>
+            <div class="agent-stars">
+              <span class="star-icons">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="star-label">5.0 &middot; 2 verified reviews</span>
+            </div>
+          </div>
+          <div class="agent-verified-badge">
+            <span class="agent-verified-badge__icon">✅</span>
+            <div class="agent-verified-badge__text">Verified<br>Agent</div>
+          </div>
+        </div>
+        <div class="agent-card__body">
+          <p class="agent-tagline" id="agent-tagline-display"></p>
+          <div class="agent-reviews">
+            <div class="review-chip">
+              <div class="review-chip__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-chip__text">"Top! Blessed Man &mdash; My family loved his work."</p>
+              <div class="review-chip__name">&#8212; Jack Henriques</div>
+            </div>
+            <div class="review-chip">
+              <div class="review-chip__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-chip__text">"Michael is a great person, very nice and helpful."</p>
+              <div class="review-chip__name">&#8212; Debra Harvey</div>
+            </div>
+          </div>
+          <div class="agent-contact" id="agent-contact-links"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FORM SECTION
+       ============================================================ -->
+  <section class="form-section">
+    <div class="container">
+
+      <!-- Form intro -->
+      <div class="form-intro">
+        <div class="form-intro__eyebrow">⚡ Free — No Obligation</div>
+        <h2 class="form-intro__heading">Check Your Eligibility in 30 Seconds</h2>
+        <p class="form-intro__sub">Answer a few quick questions and Michael will personally review your home for a free Sunrun solar installation.</p>
+      </div>
+
+      <div class="form-wrapper">
+
+      <!-- Step dots progress -->
+      <div class="progress-bar-wrap" id="progress-wrap">
+        <div class="step-dots" id="step-dots">
+          <!-- Generated by JS -->
+        </div>
+        <p class="progress-label" id="progress-label">Step 1 of 10</p>
+      </div>
+
+      <div class="slide-viewport" id="slide-viewport">
+
+        <!-- SLIDE 1: Home Ownership -->
+        <div class="slide is-active" data-slide="1">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 1 of 10 &mdash; Eligibility</p>
+            <p class="slide__question">Do you own your home?</p>
+            <div class="options-grid single-col">
+              <button class="option-btn" data-value="own" onclick="selectOption(this,1)">
+                <span class="radio-dot"></span> 🏠 &nbsp;Yes, I own it
+              </button>
+              <button class="option-btn" data-value="rent" onclick="selectOption(this,1)">
+                <span class="radio-dot"></span> 🔑 &nbsp;No, I rent
+              </button>
+            </div>
+            <div class="slide-nav">
+              <span class="nav-spacer"></span>
+              <button class="nav-btn btn-next-full" id="next-1" onclick="nextSlide(1)" disabled>Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: Home Age -->
+        <div class="slide" data-slide="2">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 2 of 10 &mdash; Your Home</p>
+            <p class="slide__question">How old is your home?</p>
+            <div class="options-grid single-col">
+              <button class="option-btn" data-value="0-10" onclick="selectOption(this,2)">
+                <span class="radio-dot"></span> 🏗️ &nbsp;0&ndash;10 years old
+              </button>
+              <button class="option-btn" data-value="10-20" onclick="selectOption(this,2)">
+                <span class="radio-dot"></span> 🏠 &nbsp;10&ndash;20 years old
+              </button>
+              <button class="option-btn" data-value="20+" onclick="selectOption(this,2)">
+                <span class="radio-dot"></span> 🏡 &nbsp;20+ years old
+              </button>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(2)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" id="next-2" onclick="nextSlide(2)" disabled>Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: Power Usage Timing -->
+        <div class="slide" data-slide="3">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 3 of 10 &mdash; Energy Usage</p>
+            <p class="slide__question">When do you use most of your power?</p>
+            <div class="options-grid single-col">
+              <button class="option-btn" data-value="day" onclick="selectOption(this,3)">
+                <span class="radio-dot"></span> ☀️ &nbsp;Mostly day time
+              </button>
+              <button class="option-btn" data-value="night" onclick="selectOption(this,3)">
+                <span class="radio-dot"></span> 🌙 &nbsp;Mostly night time
+              </button>
+              <button class="option-btn" data-value="both" onclick="selectOption(this,3)">
+                <span class="radio-dot"></span> 🔄 &nbsp;A mixture of both
+              </button>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(3)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" id="next-3" onclick="nextSlide(3)" disabled>Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4: Current Solar -->
+        <div class="slide" data-slide="4">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 4 of 10 &mdash; Current Setup</p>
+            <p class="slide__question">Do you currently have solar installed?</p>
+            <div class="options-grid single-col">
+              <button class="option-btn" data-value="no-solar" onclick="selectOption(this,4)">
+                <span class="radio-dot"></span> ❌ &nbsp;I don&rsquo;t have solar yet
+              </button>
+              <button class="option-btn" data-value="has-solar" onclick="selectOption(this,4)">
+                <span class="radio-dot"></span> ⚡ &nbsp;Yes, I already have solar
+              </button>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(4)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" id="next-4" onclick="nextSlide(4)" disabled>Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5: Roof Shading -->
+        <div class="slide" data-slide="5">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 5 of 10 &mdash; Roof Assessment</p>
+            <p class="slide__question">Does your roof have any shading issues?</p>
+            <div class="options-grid">
+              <button class="option-btn" data-value="no-shading" onclick="selectOption(this,5)">
+                <span class="radio-dot"></span> ✅ No shading
+              </button>
+              <button class="option-btn" data-value="minor" onclick="selectOption(this,5)">
+                <span class="radio-dot"></span> 🌿 Minor shading
+              </button>
+              <button class="option-btn" data-value="major" onclick="selectOption(this,5)">
+                <span class="radio-dot"></span> 🌳 Major shading
+              </button>
+              <button class="option-btn" data-value="unsure" onclick="selectOption(this,5)">
+                <span class="radio-dot"></span> 🤔 Not sure
+              </button>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(5)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" id="next-5" onclick="nextSlide(5)" disabled>Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6: Electricity Bill -->
+        <div class="slide" data-slide="6">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 6 of 10 &mdash; Energy Cost</p>
+            <p class="slide__question">What is your approximate monthly electricity bill?</p>
+            <div class="options-grid single-col" id="bill-options-grid"></div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(6)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" id="next-6" onclick="nextSlide(6)" disabled>Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 7: ZIP Code -->
+        <div class="slide" data-slide="7">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 7 of 10 &mdash; Your Location</p>
+            <p class="slide__question">What is your ZIP code?</p>
+            <div class="input-group">
+              <label class="input-label" for="field-zip">ZIP Code</label>
+              <input class="slide-input" type="text" id="field-zip" placeholder="e.g. 07001" maxlength="10" inputmode="numeric">
+              <span class="field-error" id="err-zip">⚠️ Please enter your ZIP code.</span>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(7)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" onclick="nextSlideInput(7,'field-zip','err-zip')">Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 8: Full Name -->
+        <div class="slide" data-slide="8">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 8 of 10 &mdash; Almost Done!</p>
+            <p class="slide__question">What is your full name?</p>
+            <div class="input-group">
+              <label class="input-label" for="field-name">Full Name</label>
+              <input class="slide-input" type="text" id="field-name" placeholder="e.g. Jane Smith" autocomplete="name">
+              <span class="field-error" id="err-name">⚠️ Please enter your full name.</span>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(8)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" onclick="nextSlideInput(8,'field-name','err-name')">Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 9: Email -->
+        <div class="slide" data-slide="9">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 9 of 10 &mdash; Almost Done!</p>
+            <p class="slide__question">What is your email address?</p>
+            <div class="input-group">
+              <label class="input-label" for="field-email">Email Address</label>
+              <input class="slide-input" type="email" id="field-email" placeholder="e.g. jane@email.com" autocomplete="email">
+              <span class="field-error" id="err-email">⚠️ Please enter a valid email address.</span>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(9)">&#9664; Back</button>
+              <button class="nav-btn btn-next-full" onclick="nextSlideEmail(9)">Continue &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 10: Phone -->
+        <div class="slide" data-slide="10">
+          <div class="slide__card">
+            <p class="slide__step-label">Step 10 of 10 &mdash; Last Step!</p>
+            <p class="slide__question">What is the best number to reach you?</p>
+            <div class="input-group">
+              <label class="input-label" for="field-phone">Phone Number</label>
+              <input class="slide-input" type="tel" id="field-phone" placeholder="e.g. (973) 555-0100" autocomplete="tel">
+              <span class="field-error" id="err-phone">⚠️ Please enter a valid phone number.</span>
+            </div>
+            <div class="slide-nav">
+              <button class="nav-btn btn-back" onclick="prevSlide(10)">&#9664; Back</button>
+              <button class="nav-btn btn-submit" id="btn-submit" onclick="submitForm()">
+                🎯 Check My Eligibility
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /slide-viewport -->
+
+      <!-- Privacy note -->
+      <div class="form-privacy" id="form-privacy-note">
+        <span class="form-privacy__icon">🔒</span>
+        Your information is 100% private and secure. No spam, ever.
+      </div>
+
+      <!-- Disqualification -->
+      <div class="disqualify-box" id="disqualify-box">
+        <div class="disqualify-box__icon">🏠</div>
+        <h2 class="disqualify-box__heading">Homeowners Only</h2>
+        <p class="disqualify-box__text" id="disqualify-text"></p>
+        <p class="disqualify-box__contact">
+          Questions? Contact Michael directly:
+          <a id="disq-phone-link" href="#">+1 (973) 368-3490</a>
+        </p>
+      </div>
+
+      <!-- Thank you -->
+      <div class="thankyou-box" id="thankyou-box">
+        <div class="thankyou-box__icon">🎉</div>
+        <h2 class="thankyou-box__heading" id="thankyou-heading"></h2>
+        <p class="thankyou-box__text" id="thankyou-text"></p>
+        <hr class="thankyou-divider">
+        <p class="thankyou-contact-label">Reach Michael Directly</p>
+        <div class="thankyou-contact-grid" id="thankyou-contact-links"></div>
+      </div>
+
+      </div><!-- /form-wrapper -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__logo">sun<span>run</span></div>
+      <p id="footer-disclaimer"></p>
+      <div class="site-footer__links">
+        <a id="footer-email-link" href="#">michael.edwin@sunrun.com</a>
+        <span class="site-footer__sep">|</span>
+        <a id="footer-referral-link" href="#" target="_blank">Get a Free Quote</a>
+        <span class="site-footer__sep">|</span>
+        <a id="footer-profile-link" href="#" target="_blank">View Michael's Profile</a>
+      </div>
+      <p id="footer-copyright" style="margin-top:14px; opacity:0.4;"></p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    /* ---- Apply CONFIG ---- */
+    (function applyConfig() {
+      document.getElementById('hero-client-name').textContent  = CONFIG.CLIENT_NAME;
+      document.getElementById('hero-offer').textContent        = CONFIG.CLIENT_OFFER;
+      document.getElementById('hero-cta-bar').textContent      = CONFIG.FORM_SUBHEADING;
+      document.getElementById('disqualify-text').textContent   = CONFIG.DISQUALIFY_MESSAGE;
+      document.getElementById('thankyou-heading').textContent  = CONFIG.THANKYOU_HEADING;
+      document.getElementById('thankyou-text').textContent     = CONFIG.THANKYOU_MESSAGE;
+      document.getElementById('footer-disclaimer').textContent = CONFIG.FOOTER_DISCLAIMER;
+      document.getElementById('footer-copyright').textContent  = CONFIG.FOOTER_COPYRIGHT;
+
+      /* Agent card */
+      const initials = CONFIG.AGENT_NAME.split(' ').map(n => n[0]).join('');
+      document.getElementById('agent-avatar').textContent       = initials;
+      document.getElementById('agent-name-display').textContent = CONFIG.AGENT_NAME;
+      document.getElementById('agent-title-display').textContent = CONFIG.AGENT_TITLE + ' \u00b7 Sunrun';
+      document.getElementById('agent-tagline-display').textContent = CONFIG.AGENT_TAGLINE;
+
+      /* Agent contact buttons (card) */
+      const contactWrap = document.getElementById('agent-contact-links');
+      contactWrap.innerHTML = `
+        <a class="agent-contact-btn phone" href="tel:${CONFIG.AGENT_PHONE}">📞 ${CONFIG.AGENT_PHONE}</a>
+        <a class="agent-contact-btn email" href="mailto:${CONFIG.AGENT_EMAIL}">✉️ Email Michael</a>
+        <a class="agent-contact-btn profile" href="${CONFIG.AGENT_PROFILE}" target="_blank">🔗 View Profile</a>
+      `;
+
+      /* Thank you contact buttons */
+      const tyWrap = document.getElementById('thankyou-contact-links');
+      tyWrap.innerHTML = `
+        <a class="thankyou-contact-btn phone" href="tel:${CONFIG.AGENT_PHONE}">📞 Call Michael</a>
+        <a class="thankyou-contact-btn email" href="mailto:${CONFIG.AGENT_EMAIL}">✉️ Email Michael</a>
+        <a class="thankyou-contact-btn profile" href="${CONFIG.AGENT_PROFILE}" target="_blank">🔗 Michael's Profile</a>
+      `;
+
+      /* Footer links */
+      document.getElementById('footer-email-link').href    = `mailto:${CONFIG.AGENT_EMAIL}`;
+      document.getElementById('footer-email-link').textContent = CONFIG.AGENT_EMAIL;
+      document.getElementById('footer-referral-link').href  = CONFIG.AGENT_REFERRAL;
+      document.getElementById('footer-profile-link').href   = CONFIG.AGENT_PROFILE;
+      document.getElementById('disq-phone-link').href       = `tel:${CONFIG.AGENT_PHONE}`;
+
+      /* Apply brand colors */
+      const root = document.documentElement;
+      root.style.setProperty('--orange',      CONFIG.BRAND_COLOR_PRIMARY);
+      root.style.setProperty('--orange-dark', CONFIG.BRAND_COLOR_LINK);
+      root.style.setProperty('--navy',        CONFIG.BRAND_COLOR_FOOTER);
+
+      /* Build bill options */
+      const grid = document.getElementById('bill-options-grid');
+      CONFIG.BILL_OPTIONS.forEach(label => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.dataset.value = label;
+        btn.innerHTML = `<span class="radio-dot"></span> 💡 &nbsp;${label}`;
+        btn.setAttribute('onclick', 'selectOption(this,6)');
+        grid.appendChild(btn);
+      });
+
+      /* Build step dots */
+      const dotsWrap = document.getElementById('step-dots');
+      for (let i = 1; i <= 10; i++) {
+        if (i > 1) {
+          const conn = document.createElement('div');
+          conn.className = 'step-connector';
+          conn.id = `conn-${i}`;
+          dotsWrap.appendChild(conn);
+        }
+        const dot = document.createElement('div');
+        dot.className = 'step-dot' + (i === 1 ? ' active' : '');
+        dot.id = `dot-${i}`;
+        dot.innerHTML = `<span>${i}</span>`;
+        dotsWrap.appendChild(dot);
+      }
+    })();
+
+    /* ---- State ---- */
+    const TOTAL = 10;
+    let current = 1;
+    const answers = {};
+
+    function updateProgress(step) {
+      const label = step >= 8 ? '— Almost done!' : step >= 5 ? '— Halfway there!' : '';
+      document.getElementById('progress-label').textContent = `Step ${step} of ${TOTAL} ${label}`.trim();
+      for (let i = 1; i <= TOTAL; i++) {
+        const dot  = document.getElementById(`dot-${i}`);
+        const conn = document.getElementById(`conn-${i}`);
+        dot.classList.remove('active', 'done');
+        if (i < step)       { dot.classList.add('done'); dot.innerHTML = ''; }
+        else if (i === step) { dot.classList.add('active'); dot.innerHTML = `<span>${i}</span>`; }
+        else                 { dot.innerHTML = `<span>${i}</span>`; }
+        if (conn) conn.classList.toggle('done', i <= step);
+      }
+    }
+
+    function selectOption(el, slideNum) {
+      el.closest('.slide__card').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      answers[slideNum] = el.dataset.value;
+      const nb = document.getElementById(`next-${slideNum}`);
+      if (nb) nb.disabled = false;
+      setTimeout(() => {
+        if (slideNum === 1 && answers[1] === 'rent') { disqualify(); }
+        else { goToSlide(slideNum + 1, 'next'); }
+      }, 280);
+    }
+
+    let transitioning = false;
+    function goToSlide(target, dir) {
+      if (target < 1 || target > TOTAL || transitioning) return;
+      const cur = document.querySelector(`.slide[data-slide="${current}"]`);
+      const tgt = document.querySelector(`.slide[data-slide="${target}"]`);
+      if (!tgt || !cur) return;
+
+      transitioning = true;
+      const outX = dir === 'next' ? '-36px' : '36px';
+      const inX  = dir === 'next' ?  '36px' : '-36px';
+      const DUR  = 240;
+
+      /* Animate current slide out */
+      cur.style.transition = `opacity ${DUR}ms ease, transform ${DUR}ms ease`;
+      cur.style.opacity    = '0';
+      cur.style.transform  = `translateX(${outX})`;
+
+      setTimeout(() => {
+        /* Hide current, reset its inline styles */
+        cur.classList.remove('is-active');
+        cur.style.transition = '';
+        cur.style.opacity    = '';
+        cur.style.transform  = '';
+
+        /* Position target off-screen, then show it */
+        tgt.style.transition = 'none';
+        tgt.style.opacity    = '0';
+        tgt.style.transform  = `translateX(${inX})`;
+        tgt.classList.add('is-active');
+
+        /* Force reflow so the starting position registers */
+        void tgt.offsetWidth;
+
+        /* Animate target in */
+        tgt.style.transition = `opacity ${DUR}ms ease, transform ${DUR}ms ease`;
+        tgt.style.opacity    = '1';
+        tgt.style.transform  = 'translateX(0)';
+
+        setTimeout(() => {
+          tgt.style.transition = '';
+          tgt.style.opacity    = '';
+          tgt.style.transform  = '';
+          transitioning = false;
+          const inp = tgt.querySelector('.slide-input');
+          if (inp) inp.focus();
+        }, DUR + 20);
+
+      }, DUR);
+
+      current = target;
+      updateProgress(target);
+    }
+
+    function nextSlide(n) { if (answers[n]) goToSlide(n + 1, 'next'); }
+    function prevSlide(n) { goToSlide(n - 1, 'prev'); }
+
+    function nextSlideInput(n, fieldId, errId) {
+      const f = document.getElementById(fieldId);
+      const e = document.getElementById(errId);
+      if (!f.value.trim()) { e.classList.add('visible'); f.focus(); return; }
+      e.classList.remove('visible');
+      answers[n] = f.value.trim();
+      goToSlide(n + 1, 'next');
+    }
+
+    function nextSlideEmail(n) {
+      const f = document.getElementById('field-email');
+      const e = document.getElementById('err-email');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())) {
+        e.classList.add('visible'); f.focus(); return;
+      }
+      e.classList.remove('visible');
+      answers[n] = f.value.trim();
+      goToSlide(n + 1, 'next');
+    }
+
+    function disqualify() {
+      document.getElementById('slide-viewport').style.display  = 'none';
+      document.getElementById('progress-wrap').style.display   = 'none';
+      document.getElementById('form-privacy-note').style.display = 'none';
+      document.getElementById('disqualify-box').classList.add('visible');
+    }
+
+    function submitForm() {
+      const phoneField = document.getElementById('field-phone');
+      const phoneErr   = document.getElementById('err-phone');
+      if (!phoneField.value.trim() || phoneField.value.trim().replace(/\D/g,'').length < 7) {
+        phoneErr.classList.add('visible'); phoneField.focus(); return;
+      }
+      phoneErr.classList.remove('visible');
+      answers[10] = phoneField.value.trim();
+
+      const btn = document.getElementById('btn-submit');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Checking Eligibility...';
+
+      /* ---- Send to CRM / webhook here ---- */
+      /* fetch('/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(answers) }) */
+      console.log('Lead data:', answers);
+
+      setTimeout(() => {
+        document.getElementById('slide-viewport').style.display   = 'none';
+        document.getElementById('progress-wrap').style.display    = 'none';
+        document.getElementById('form-privacy-note').style.display = 'none';
+        document.getElementById('thankyou-box').classList.add('visible');
+        document.getElementById('thankyou-box').scrollIntoView({ behavior:'smooth', block:'center' });
+      }, 1500);
+    }
+
+    /* Enter key on inputs */
+    document.getElementById('field-zip').addEventListener('keydown',   e => { if (e.key==='Enter') nextSlideInput(7,'field-zip','err-zip'); });
+    document.getElementById('field-name').addEventListener('keydown',  e => { if (e.key==='Enter') nextSlideInput(8,'field-name','err-name'); });
+    document.getElementById('field-email').addEventListener('keydown', e => { if (e.key==='Enter') nextSlideEmail(9); });
+    document.getElementById('field-phone').addEventListener('keydown', e => { if (e.key==='Enter') submitForm(); });
+  </script>
+
+</body>
+</html>
