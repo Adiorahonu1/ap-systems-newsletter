@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead Automation Proposal — RightAway Insurance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:     #0d0d0d;
+      --gray-900:  #1a1a1a;
+      --gray-700:  #444;
+      --gray-600:  #666;
+      --gray-400:  #999;
+      --gray-200:  #e5e5e5;
+      --gray-100:  #f6f6f6;
+      --white:     #ffffff;
+      --magenta:   #c8006e;
+      --mag-glow:  rgba(200,0,110,0.15);
+      --orange:    #e9a226;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    h1,h2,h3 { font-family: 'Instrument Serif', serif; font-weight: 400; line-height: 1.2; }
+
+    .wrap      { max-width: 740px;  margin: 0 auto; padding: 0 28px; }
+    .wrap-wide { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
+
+    .tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--gray-400);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    /* ── REVEAL ── */
+    .r { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .r.d1{transition-delay:.06s}.r.d2{transition-delay:.12s}.r.d3{transition-delay:.18s}
+    .r.d4{transition-delay:.24s}.r.d5{transition-delay:.3s}.r.d6{transition-delay:.36s}
+    .r.on { opacity: 1; transform: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 56px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 36px;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--gray-200);
+      backdrop-filter: blur(12px);
+    }
+    .nav-id {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      letter-spacing: 0.06em;
+    }
+    .nav-id b { color: var(--magenta); font-weight: 500; }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--black);
+      color: var(--white);
+      padding: 8px 22px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.18s, transform 0.15s;
+    }
+    .nav-btn:hover { background: var(--magenta); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 56px;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .hero-inner { padding: 72px 0 80px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px;
+      border: 1px solid rgba(200,0,110,0.3);
+      border-radius: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--magenta);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-dot { width: 6px; height: 6px; background: var(--magenta); border-radius: 50%; animation: pulse 1.6s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.2} }
+
+    .hero-h1 {
+      font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+      color: var(--black);
+      margin-bottom: 22px;
+      max-width: 620px;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+    .hero-h1 em { color: var(--magenta); font-style: italic; }
+
+    .hero-p {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      margin-bottom: 40px;
+      max-width: 500px;
+      line-height: 1.72;
+    }
+
+    .hero-acts { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+    .btn-mag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--magenta); color: var(--white);
+      padding: 14px 34px; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 6px 28px var(--mag-glow);
+      transition: background 0.18s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-mag:hover { background: #a0005a; transform: translateY(-2px); box-shadow: 0 10px 36px rgba(200,0,110,0.25); }
+
+    .btn-ghost {
+      color: var(--gray-600); font-size: 0.9rem; text-decoration: none;
+      border-bottom: 1px solid var(--gray-400); padding-bottom: 2px;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .btn-ghost:hover { color: var(--black); border-color: var(--black); }
+
+    .hero-trio {
+      display: flex; gap: 0;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .hero-trio-item { flex: 1; padding-right: 40px; }
+    .hero-trio-item:not(:last-child) {
+      border-right: 1px solid var(--gray-200);
+      margin-right: 40px;
+    }
+    .trio-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.6rem;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .trio-num s-accent { color: var(--magenta); }
+    .trio-label { font-size: 0.8rem; color: var(--gray-600); }
+
+    /* ── SECTIONS ── */
+    .sec { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .sec-alt { background: var(--gray-100); }
+    .sec-dark { background: var(--black); border-bottom: none; }
+    .sec-dark .tag { color: rgba(255,255,255,0.22); }
+    .sec-dark .sec-h { color: var(--white); }
+    .sec-dark .sec-p { color: rgba(255,255,255,0.5); }
+
+    .sec-h {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--black);
+      margin-bottom: 12px;
+      letter-spacing: -0.018em;
+    }
+    .sec-p {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 520px;
+      line-height: 1.72;
+      margin-bottom: 44px;
+    }
+
+    /* ── PROBLEM ── */
+    .prob-list { list-style: none; max-width: 560px; }
+    .prob-item {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 0.97rem; color: var(--gray-900); line-height: 1.6;
+    }
+    .prob-item:first-child { border-top: 1px solid var(--gray-200); }
+    .prob-ico { font-size: 1.1rem; flex-shrink: 0; padding-top: 2px; }
+
+    .cost-callout {
+      margin-top: 36px;
+      padding: 22px 28px;
+      border-left: 3px solid var(--magenta);
+      background: rgba(200,0,110,0.04);
+      border-radius: 0 8px 8px 0;
+      max-width: 440px;
+    }
+    .cost-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.2rem; color: var(--black); line-height: 1; margin-bottom: 5px;
+    }
+    .cost-lbl { font-size: 0.82rem; color: var(--gray-600); }
+
+    /* ── BEFORE / AFTER ── */
+    .ba-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-radius: 14px; overflow: hidden;
+      max-width: 660px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    }
+    .ba-col { padding: 34px 38px; }
+    .ba-col.ba-before { background: var(--gray-100); }
+    .ba-col.ba-after  { background: var(--black); }
+    .ba-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: 22px;
+    }
+    .ba-before .ba-lbl { color: var(--gray-400); }
+    .ba-after  .ba-lbl { color: rgba(255,255,255,0.3); }
+    .ba-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+    .ba-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.9rem; line-height: 1.45;
+    }
+    .ba-before .ba-list li { color: var(--gray-700); }
+    .ba-after  .ba-list li { color: rgba(255,255,255,0.82); }
+    .bi { flex-shrink: 0; margin-top: 1px; font-size: 0.85rem; }
+
+    /* ── FLOW ── */
+    .flow-visual {
+      display: flex; align-items: center; gap: 0;
+      margin: 0 0 48px;
+      max-width: 540px;
+    }
+    .fv-node {
+      flex: 1;
+      text-align: center;
+      padding: 18px 12px;
+      background: var(--gray-100);
+      border-radius: 10px;
+      position: relative;
+    }
+    .fv-icon { font-size: 1.6rem; display: block; margin-bottom: 6px; }
+    .fv-label { font-size: 0.75rem; font-weight: 600; color: var(--black); }
+    .fv-sub { font-size: 0.68rem; color: var(--gray-600); margin-top: 2px; }
+    .fv-arrow {
+      padding: 0 10px; color: var(--magenta); font-size: 1.1rem;
+      flex-shrink: 0; display: flex; align-items: center;
+      animation: arr 1.8s ease-in-out infinite;
+    }
+    @keyframes arr { 0%,100%{opacity:.3;transform:translateX(-3px)}50%{opacity:1;transform:translateX(0)} }
+
+    /* ── STEPS ── */
+    .steps { max-width: 480px; }
+    .step {
+      display: flex; gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .step:first-child { border-top: 1px solid var(--gray-200); }
+    .step-n {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem; color: var(--magenta);
+      letter-spacing: 0.06em; flex-shrink: 0; width: 26px; margin-top: 3px;
+    }
+    .step-ico { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .step-title { font-size: 0.95rem; font-weight: 600; color: var(--black); margin-bottom: 3px; }
+    .step-body  { font-size: 0.86rem; color: var(--gray-600); line-height: 1.62; }
+
+    /* ── TRUST ── */
+    .trust-card {
+      display: flex; align-items: flex-start; gap: 28px;
+      padding: 36px 40px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      max-width: 620px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+    .trust-av {
+      width: 72px; height: 72px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #c8006e 0%, #1a2744 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-family: 'Instrument Serif', serif; font-size: 1.5rem;
+    }
+    .trust-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.35rem; color: var(--black); margin-bottom: 2px;
+    }
+    .trust-role { font-size: 0.82rem; color: var(--gray-600); margin-bottom: 14px; }
+    .trust-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+    .chip {
+      font-size: 0.7rem; padding: 4px 12px;
+      background: var(--gray-100); border: 1px solid var(--gray-200);
+      border-radius: 20px; color: var(--gray-700);
+    }
+    .li-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.82rem; color: #0077b5; text-decoration: none; font-weight: 500;
+    }
+    .li-link:hover { text-decoration: underline; }
+    .li-icon { width: 16px; height: 16px; display: inline-block; vertical-align: middle; }
+
+    /* ── PRICING ── */
+    .price-card {
+      padding: 44px 48px;
+      border: 2px solid var(--black);
+      border-radius: 16px;
+      max-width: 540px;
+    }
+    .price-amt {
+      font-family: 'Instrument Serif', serif;
+      font-size: 4.5rem; color: var(--black); line-height: 1; margin-bottom: 6px;
+    }
+    .price-sub { font-size: 0.88rem; color: var(--gray-600); margin-bottom: 28px; }
+    .price-split {
+      display: flex; gap: 0;
+      border: 1px solid var(--gray-200); border-radius: 10px;
+      overflow: hidden; margin-bottom: 28px;
+    }
+    .ps-item { flex: 1; padding: 18px 20px; text-align: center; }
+    .ps-item:first-child { border-right: 1px solid var(--gray-200); }
+    .ps-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.7rem; color: var(--black); line-height: 1; margin-bottom: 4px;
+    }
+    .ps-lbl { font-size: 0.75rem; color: var(--gray-600); }
+    .incl { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 9px; }
+    .incl li { display: flex; align-items: center; gap: 11px; font-size: 0.9rem; color: var(--gray-900); }
+    .ck { color: var(--magenta); font-size: 0.85rem; flex-shrink: 0; }
+    .risk {
+      background: rgba(200,0,110,0.05);
+      border: 1px solid rgba(200,0,110,0.2);
+      border-radius: 8px;
+      padding: 15px 20px;
+      font-size: 0.87rem; color: var(--gray-900); line-height: 1.65;
+    }
+    .risk b { color: var(--magenta); }
+
+    /* ── CTA ── */
+    .cta-sec {
+      background: var(--black);
+      padding: 96px 0 80px;
+    }
+    .cta-h {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      color: var(--white); margin-bottom: 14px; letter-spacing: -0.02em; line-height: 1.18;
+    }
+    .cta-p { font-size: 1rem; color: rgba(255,255,255,0.48); margin-bottom: 40px; max-width: 420px; line-height: 1.72; }
+    .cta-btns { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--magenta); color: var(--white);
+      padding: 16px 38px; border-radius: 8px;
+      font-size: 0.97rem; font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(200,0,110,0.28);
+      transition: background 0.18s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-cta:hover { background: #a0005a; transform: translateY(-2px); box-shadow: 0 12px 44px rgba(200,0,110,0.38); }
+    .btn-cta-alt {
+      color: rgba(255,255,255,0.55); font-size: 0.9rem; text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .btn-cta-alt:hover { color: var(--white); border-color: var(--white); }
+
+    .urgency-row {
+      display: flex; gap: 40px; flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .urg {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 0.82rem; color: rgba(255,255,255,0.42);
+    }
+    .urg-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+    .urg b { color: rgba(255,255,255,0.68); }
+
+    /* ── CONTACT ── */
+    .contact-bar {
+      padding: 36px 0;
+      background: #f8f8f8;
+      border-top: 1px solid var(--gray-200);
+    }
+    .cb-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .cb-name { font-size: 0.88rem; color: var(--gray-700); }
+    .cb-name b { color: var(--black); }
+    .cb-links { display: flex; gap: 24px; }
+    .cb-link {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.84rem; color: var(--gray-600);
+      text-decoration: none; transition: color 0.18s;
+    }
+    .cb-link:hover { color: var(--magenta); }
+
+    /* ── EMAILS (Onuora's use) ── */
+    .emails-wrap {
+      padding: 72px 0;
+      background: #f2f2f2;
+      border-top: 2px dashed var(--gray-200);
+    }
+    .em-heading {
+      font-size: 0.72rem; font-family: 'DM Mono', monospace;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+    .em-note { font-size: 0.82rem; color: var(--gray-600); margin-bottom: 36px; }
+    .em-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 10px; padding: 26px 30px; margin-bottom: 18px; max-width: 620px;
+    }
+    .em-n {
+      font-family: 'DM Mono', monospace; font-size: 0.66rem;
+      color: var(--magenta); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;
+    }
+    .em-subj {
+      font-weight: 600; font-size: 0.87rem; color: var(--black);
+      margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--gray-200);
+    }
+    .em-body {
+      font-size: 0.87rem; color: var(--gray-900);
+      line-height: 1.85; white-space: pre-line;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 26px 0; background: var(--black);
+    }
+    .foot-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .foot-brand {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: rgba(255,255,255,0.22); letter-spacing: 0.08em;
+    }
+    .foot-meta { font-size: 0.74rem; color: rgba(255,255,255,0.18); }
+
+    @media (max-width: 640px) {
+      .ba-wrap { grid-template-columns: 1fr; }
+      .hero-trio { flex-direction: column; gap: 20px; }
+      .hero-trio-item { border-right: none !important; margin-right: 0 !important; padding-right: 0; }
+      .price-split { flex-direction: column; }
+      .urgency-row { flex-direction: column; gap: 14px; }
+      nav { padding: 0 20px; }
+      .price-card { padding: 30px 24px; }
+      .trust-card { flex-direction: column; }
+      .flow-visual { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-id">AP Systems × <b>RightAway Insurance</b></div>
+    <a href="#decision" class="nav-btn">Accept Proposal →</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-badge r"><div class="hero-dot"></div> Proposal · RightAway Insurance · March 2026</div>
+        <h1 class="hero-h1 r d1">Your leads enter the CRM <em>before</em> your coffee gets cold.</h1>
+        <p class="hero-p r d2">This page shows exactly what we'd build for RightAway — what it does, what it costs, and what happens next. Five minutes to read. Clear decision at the end.</p>
+        <div class="hero-acts r d3">
+          <a href="#decision" class="btn-mag">Accept This Proposal →</a>
+          <a href="#how-it-works" class="btn-ghost">See how it works</a>
+        </div>
+        <div class="hero-trio r d4">
+          <div class="hero-trio-item">
+            <div class="trio-num">3<span style="font-size:1.4rem;color:var(--magenta)">hrs</span></div>
+            <div class="trio-label">saved every week</div>
+          </div>
+          <div class="hero-trio-item">
+            <div class="trio-num">0</div>
+            <div class="trio-label">minutes of manual entry</div>
+          </div>
+          <div class="hero-trio-item">
+            <div class="trio-num">$3<span style="font-size:1.4rem;color:var(--magenta)">k</span></div>
+            <div class="trio-label">one-time, you own it</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROBLEM ── -->
+  <section id="problem" class="sec">
+    <div class="wrap">
+      <div class="tag r">The Problem</div>
+      <h2 class="sec-h r d1">Every lead costs you twice.</h2>
+      <p class="sec-p r d2">Once to acquire it. Again every morning when someone enters it by hand.</p>
+      <ul class="prob-list">
+        <li class="prob-item r d1">
+          <span class="prob-ico">⏱</span>
+          <span>Every form submission waits until someone manually copies it into Agency Zoom or QQ Catalyst — that's 3–5 minutes per lead, before anything else starts.</span>
+        </li>
+        <li class="prob-item r d2">
+          <span class="prob-ico">🌡</span>
+          <span>Leads contacted within 5 minutes convert 9× more often. Every minute of delay is revenue leaving the table.</span>
+        </li>
+        <li class="prob-item r d3">
+          <span class="prob-ico">🔁</span>
+          <span>At 9–12 leads a day, that's 30–45 minutes of admin before the actual work starts. Every single day.</span>
+        </li>
+        <li class="prob-item r d4">
+          <span class="prob-ico">⚠️</span>
+          <span>Manual entry means typos, missed fields, duplicate records — and no way to trace what went wrong when a lead disappears.</span>
+        </li>
+      </ul>
+      <div class="cost-callout r d5">
+        <div class="cost-num">$6,250 / yr</div>
+        <div class="cost-lbl">in staff time spent on data entry at current lead volume — before counting the revenue lost to slow follow-up</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BEFORE / AFTER ── -->
+  <section id="what-changes" class="sec sec-alt">
+    <div class="wrap">
+      <div class="tag r">What Changes</div>
+      <h2 class="sec-h r d1">One system. Zero manual steps.</h2>
+      <p class="sec-p r d2">Your forms stay the same. Your CRMs stay the same. You just stop entering data into them by hand.</p>
+      <div class="ba-wrap r d3">
+        <div class="ba-col ba-before">
+          <div class="ba-lbl">Right now</div>
+          <ul class="ba-list">
+            <li><span class="bi">✗</span> Manual CSV export daily</li>
+            <li><span class="bi">✗</span> 15–30 min entering data</li>
+            <li><span class="bi">✗</span> Leads cooling while you wait</li>
+            <li><span class="bi">✗</span> Typos and missed fields</li>
+            <li><span class="bi">✗</span> No audit trail</li>
+            <li><span class="bi">✗</span> Double entry into 2 CRMs</li>
+          </ul>
+        </div>
+        <div class="ba-col ba-after">
+          <div class="ba-lbl">After</div>
+          <ul class="ba-list">
+            <li><span class="bi" style="color:var(--magenta)">✓</span> Automatic on form submit</li>
+            <li><span class="bi" style="color:var(--magenta)">✓</span> 0 minutes of entry</li>
+            <li><span class="bi" style="color:var(--magenta)">✓</span> Lead in CRM within seconds</li>
+            <li><span class="bi" style="color:var(--magenta)">✓</span> Validated every time</li>
+            <li><span class="bi" style="color:var(--magenta)">✓</span> Full log of every entry</li>
+            <li><span class="bi" style="color:var(--magenta)">✓</span> Both CRMs synced instantly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how-it-works" class="sec">
+    <div class="wrap">
+      <div class="tag r">How It Works</div>
+      <h2 class="sec-h r d1">Three things happen. You only see the last one.</h2>
+      <p class="sec-p r d2">The complexity is invisible. Your team just sees a new lead — already in the CRM, already formatted correctly.</p>
+
+      <div class="flow-visual r d3">
+        <div class="fv-node">
+          <span class="fv-icon">📋</span>
+          <div class="fv-label">Lead Form</div>
+          <div class="fv-sub">No changes for you</div>
+        </div>
+        <div class="fv-arrow">→</div>
+        <div class="fv-node">
+          <span class="fv-icon">⚡</span>
+          <div class="fv-label">System</div>
+          <div class="fv-sub">Validates + routes</div>
+        </div>
+        <div class="fv-arrow">→</div>
+        <div class="fv-node">
+          <span class="fv-icon">✅</span>
+          <div class="fv-label">Both CRMs</div>
+          <div class="fv-sub">Agency Zoom + QQ</div>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step r d1">
+          <div class="step-n">01</div>
+          <div class="step-ico">📋</div>
+          <div>
+            <div class="step-title">Lead submits your form</div>
+            <div class="step-body">Nothing changes on your end. Same form, same process. You don't need to do anything differently.</div>
+          </div>
+        </div>
+        <div class="step r d2">
+          <div class="step-n">02</div>
+          <div class="step-ico">⚡</div>
+          <div>
+            <div class="step-title">System catches it in the background</div>
+            <div class="step-body">A webhook fires instantly. The data is validated, cleaned, and routed. No human involved. Takes about 3 seconds.</div>
+          </div>
+        </div>
+        <div class="step r d3">
+          <div class="step-n">03</div>
+          <div class="step-ico">✅</div>
+          <div>
+            <div class="step-title">Both CRMs updated automatically</div>
+            <div class="step-body">Agency Zoom and QQ Catalyst receive the lead simultaneously — perfectly formatted, no missing fields, no manual effort.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST ── -->
+  <section id="trust" class="sec sec-alt">
+    <div class="wrap">
+      <div class="tag r">Who Builds This</div>
+      <h2 class="sec-h r d1">Built by someone who understands both insurance and systems.</h2>
+      <p class="sec-p r d2">Not a generic freelancer. A security engineer who specialises in insurance automation — Agency Zoom, QQ Catalyst, and how lead flows actually work.</p>
+      <div class="trust-card r d3">
+        <div class="trust-av">OA</div>
+        <div>
+          <div class="trust-name">Onuora Adiorah</div>
+          <div class="trust-role">Security Engineer · N8N Automation Specialist · Insurance Systems</div>
+          <div class="trust-chips">
+            <span class="chip">🔒 Security Engineering</span>
+            <span class="chip">⚙️ N8N Automation</span>
+            <span class="chip">🛡 Agency Zoom</span>
+            <span class="chip">📊 QQ Catalyst</span>
+            <span class="chip">🔗 API Integration</span>
+          </div>
+          <a href="https://www.linkedin.com/in/adiorahonuora-security-eng/" target="_blank" class="li-link">
+            <svg class="li-icon" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            View LinkedIn Profile →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ── -->
+  <section id="pricing" class="sec">
+    <div class="wrap">
+      <div class="tag r">The Investment</div>
+      <h2 class="sec-h r d1">One price. No surprises. No ongoing fees.</h2>
+      <p class="sec-p r d2">You own the system outright. Not renting a subscription. Not dependent on an agency to keep it running.</p>
+      <div class="price-card r d3">
+        <div class="price-amt">$3,000</div>
+        <div class="price-sub">One-time · You own it · No monthly fees</div>
+        <div class="price-split">
+          <div class="ps-item">
+            <div class="ps-num">$1,500</div>
+            <div class="ps-lbl">Deposit to start</div>
+          </div>
+          <div class="ps-item">
+            <div class="ps-num">$1,500</div>
+            <div class="ps-lbl">On go-live</div>
+          </div>
+        </div>
+        <ul class="incl">
+          <li><span class="ck">✓</span> Full N8N automation build</li>
+          <li><span class="ck">✓</span> Agency Zoom API integration</li>
+          <li><span class="ck">✓</span> QQ Catalyst API integration</li>
+          <li><span class="ck">✓</span> Data validation — no bad records</li>
+          <li><span class="ck">✓</span> Error handling and alerts</li>
+          <li><span class="ck">✓</span> 30 days post-launch support</li>
+          <li><span class="ck">✓</span> Full documentation — no black box</li>
+        </ul>
+        <div class="risk"><b>Risk reversal:</b> If the system isn't live within 4 weeks of discovery — you don't pay the final $1,500. No questions asked.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section id="decision" class="cta-sec">
+    <div class="wrap">
+      <div class="tag r">Next Step</div>
+      <h2 class="cta-h r d1">You've seen enough to know this makes sense.</h2>
+      <p class="cta-p r d2">Reply to confirm. Sign a one-page agreement. Send the deposit. Build starts within a week.</p>
+      <div class="cta-btns r d3">
+        <a href="mailto:adiorahonuora@gmail.com?subject=I'm In — RightAway Lead Automation&body=Hi Onuora, I'd like to move forward with the lead automation proposal. Let's set up the next step." class="btn-cta">Accept This Proposal →</a>
+        <a href="tel:+18622559789" class="btn-cta-alt">Call (862) 255-9789</a>
+      </div>
+      <div class="urgency-row r d4">
+        <div class="urg"><div class="urg-dot"></div><span><b>April 7 build slot open.</b> Confirm by April 4 to secure it.</span></div>
+        <div class="urg"><div class="urg-dot"></div><span>No live system = <b>no final payment.</b> Zero risk.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar">
+    <div class="wrap-wide">
+      <div class="cb-inner">
+        <div class="cb-name"><b>Onuora Adiorah</b> &nbsp;·&nbsp; adiorahonuora@gmail.com &nbsp;·&nbsp; (862) 255-9789</div>
+        <div class="cb-links">
+          <a href="mailto:adiorahonuora@gmail.com" class="cb-link">✉ Email</a>
+          <a href="tel:+18622559789" class="cb-link">📞 Call</a>
+          <a href="https://www.linkedin.com/in/adiorahonuora-security-eng/" target="_blank" class="cb-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOLLOW-UP EMAILS — For Onuora only -->
+  <div class="emails-wrap">
+    <div class="wrap">
+      <div class="em-heading">↓ Your follow-up emails — copy & send</div>
+      <div class="em-note">3 options to send Jahan when sharing this page. Pick the tone that fits.</div>
+
+      <div class="em-card">
+        <div class="em-n">Option 1 — Clean &amp; Professional</div>
+        <div class="em-subj">Subject: Your lead automation proposal — quick link</div>
+        <div class="em-body">Hi Jahan,
+
+I wanted to follow up and share the proposal page I put together for RightAway.
+
+It walks through the full system — what gets built, what changes, and what it costs — in a way that's easy to review with your team.
+
+→ [Paste page link here]
+
+I've held an April 7 build slot open. Happy to answer any questions before then.
+
+Best,
+Onuora</div>
+      </div>
+
+      <div class="em-card">
+        <div class="em-n">Option 2 — Slightly Direct</div>
+        <div class="em-subj">Subject: The lead automation system — ready to move forward?</div>
+        <div class="em-body">Hi Jahan,
+
+Put together a proposal page that makes the whole thing clear — the problem, the system, and the cost.
+
+→ [Paste page link here]
+
+Short read. If it looks good, replying to this email is all you need to do to get started.
+
+I've got an April 7 slot available. Worth a quick look?
+
+Onuora</div>
+      </div>
+
+      <div class="em-card">
+        <div class="em-n">Option 3 — Very Short</div>
+        <div class="em-subj">Subject: RightAway — proposal</div>
+        <div class="em-body">Hi Jahan,
+
+Proposal is here: [link]
+
+3-minute read. If it works, just reply and we'll get started.
+
+Onuora</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap-wide">
+      <div class="foot-inner">
+        <div class="foot-brand">AP SYSTEMS</div>
+        <div class="foot-meta">Prepared for RightAway Insurance · March 2026 · Valid 30 days</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

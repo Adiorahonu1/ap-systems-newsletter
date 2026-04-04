@@ -1,0 +1,160 @@
+{
+  "client_company": "BayfordBridge",
+  "client_contacts": "Mitchel Rubinstein",
+  "client_email": "mitchel@bayfordbridge.com",
+  "client_phone": null,
+  "client_website": "bayfordbridge.com",
+  "client_industry": "Real Estate / Land Acquisition",
+  "client_states": null,
+
+  "tagline": "Automated Property Owner Outreach, Built to Fill Your Acquisition Pipeline",
+  "problem_summary": "BayfordBridge holds a list of 6,000 property owners with no systematic way to reach them at scale. Without enrichment or segmentation, every outreach attempt is a generic blast that fails to speak to the individual owner's situation. Qualified sellers slip through the cracks because there is no automated follow-up or meeting booking system in place. The result is a high-value list sitting idle while acquisition opportunities go untapped.",
+  "solution_summary": "AP Systems will build a full-stack outreach automation that enriches, scores, and segments the 6,000 contacts by acquisition priority using real property data and Claude AI. Five targeted email sequences will be loaded into Instantly, each one tailored to a specific owner profile, and deployed with native warmup and sending controls. Every reply is caught by an N8N webhook, classified by Claude, and surfaced to your reply team with a suggested response to keep a human touch on every conversation. The result is a pipeline that generates qualified meeting bookings at scale while your team maintains personal control over replies.",
+
+  "pain_points": [
+    "Reaching 6,000 property owners manually is impossible to do at any meaningful scale.",
+    "Without segmentation, every owner receives the same generic message, destroying conversion rates before the campaign even starts.",
+    "Qualified leads slip through with no automated follow-up or meeting booking system to capture them.",
+    "There is no visibility into who has been contacted, who replied, and who is ready to sell."
+  ],
+
+  "how_it_works": [
+    "Upload the 6,000-contact list. We clean it and enrich every record with property data (lot size, ownership duration, assessed value) using Regrid",
+    "Claude AI scores each lead 0-100 and assigns them to one of five segments: Vacant Land, Inherited Property, Long-Term Holders, Large Underutilized Lots, and Out-of-State Owners",
+    "Five tailored email sequences are loaded into Instantly. Each sequence speaks directly to that segment's situation and motivation to sell",
+    "Instantly handles sending with built-in warmup, daily limits, and A/Z testing to maximize deliverability and open rates",
+    "Every reply triggers an N8N webhook. Claude reads it, classifies the intent, and surfaces it to your reply team with a suggested response. The team sends the reply, and interested owners receive a Calendly booking link.",
+    "A re-engagement workflow runs every 14 days to follow up with leads who went cold, keeping the pipeline active without manual effort"
+  ],
+
+  "what_is_included": [
+    "Property list enrichment for up to 6,000 contacts using Regrid data",
+    "AI-powered lead scoring (0-100) and segmentation into 5 priority tiers",
+    "5 Instantly email sequences with copy tailored per segment",
+    "N8N reply triage workflow with AI-suggested responses for your team",
+    "Calendly integration for automated meeting booking",
+    "14-day re-engagement subsequence for cold leads",
+    "Deployment, testing, and handoff documentation"
+  ],
+
+  "flow_nodes": ["Property List", "Enrichment & Scoring", "Instantly Campaign", "Reply Handler", "Meeting Booked"],
+
+  "tools_mentioned": ["Instantly", "N8N", "Claude API", "Regrid", "Calendly"],
+
+  "tool_costs": [
+    {
+      "tool": "Instantly (Platform)",
+      "purpose": "Email campaign management, warmup, A/Z testing, reply inbox",
+      "cost": "~$37/mo"
+    },
+    {
+      "tool": "Instantly (Domains)",
+      "purpose": "7 to 10 domains recommended. Each domain: 5 inboxes x 30 msgs/day = 150 emails/day. 7 domains = 1,050 emails/day. 10 domains = 1,500 emails/day.",
+      "cost": "$105-150/mo"
+    },
+    {
+      "tool": "Regrid",
+      "purpose": "One-time bulk property data enrichment for 6,000 contacts",
+      "cost": "$200-400 (one-time)"
+    },
+    {
+      "tool": "N8N",
+      "purpose": "Workflow automation for reply handling, routing, and re-engagement",
+      "cost": "~$20/mo"
+    },
+    {
+      "tool": "Calendly",
+      "purpose": "Meeting booking integration for qualified leads",
+      "cost": "~$10/mo"
+    }
+  ],
+
+  "contrast_rows": [
+    {"before": "Manually reaching out to 6,000 owners one by one", "after": "Fully automated outreach campaigns running 24/7"},
+    {"before": "Generic email blasts with no segmentation", "after": "5 targeted sequences matched to each owner profile"},
+    {"before": "Replies go unanswered or take days to handle", "after": "AI triages every reply and hands it to your team with a suggested response"},
+    {"before": "No visibility into who has been contacted or booked", "after": "Every lead tracked from first touch to meeting booked"}
+  ],
+
+  "timeline_weeks": 4,
+  "timeline_phases": [
+    {
+      "name": "Discovery & Data Prep",
+      "duration": "Week 1",
+      "description": "Clean and enrich the 6,000-contact list using Regrid property data. Run Claude AI scoring to segment leads into 5 priority tiers. Deliver enriched CSV with scores."
+    },
+    {
+      "name": "Build",
+      "duration": "Weeks 2 to 3",
+      "description": "Configure 5 Instantly sequences with per-segment copy. Build N8N workflows for reply handling, Calendly routing, and re-engagement cron. Connect all integrations."
+    },
+    {
+      "name": "Testing & Go-Live",
+      "duration": "Week 4",
+      "description": "End-to-end testing of the full outreach flow. Campaign launch with warmup active. Handoff walkthrough and documentation delivered to Mitchel."
+    }
+  ],
+
+  "total_price": 2500,
+  "deposit_amount": 1250,
+  "final_payment_amount": 1250,
+  "payment_structure": "split",
+  "invoice_number": "AP-2026-002",
+
+  "invoice_line_items": [
+    {
+      "number": 1,
+      "title": "Property List Enrichment & AI Segmentation",
+      "description": "Enrich 6,000 contacts with Regrid property data. Score and segment leads into 5 priority tiers using Claude AI.",
+      "qty": 1,
+      "unit_price": 833,
+      "amount_display": "833.00"
+    },
+    {
+      "number": 2,
+      "title": "Instantly Campaign Build (5 Sequences)",
+      "description": "Build and configure 5 targeted email sequences in Instantly with per-segment copy, warmup, and A/Z testing.",
+      "qty": 1,
+      "unit_price": 833,
+      "amount_display": "833.00"
+    },
+    {
+      "number": 3,
+      "title": "N8N Automation & Calendly Integration",
+      "description": "Reply triage workflow, Calendly booking integration, and 14-day re-engagement subsequence.",
+      "qty": 1,
+      "unit_price": 834,
+      "amount_display": "834.00"
+    }
+  ],
+
+  "scope_deliverables": [
+    "Property list enrichment for up to 6,000 contacts",
+    "Lead scoring model and 5-segment classification system",
+    "Instantly campaign setup with 5 sequence variants",
+    "N8N reply handling and routing workflow",
+    "Calendly booking integration",
+    "14-day re-engagement subsequence",
+    "Deployment, QA, and handoff documentation"
+  ],
+  "out_of_scope": "CRM setup or integration, ongoing campaign management after handoff, paid advertising, copywriting revisions beyond two rounds, any work outside the defined 6,000-contact list, and third-party tool subscription costs (Instantly, Regrid, N8N, Calendly billed directly to client).",
+  "client_responsibilities": [
+    "Provide the full 6,000-contact list in CSV format within 3 days of project start",
+    "Provide access to an active Instantly account (or create one prior to kickoff)",
+    "Provide Calendly account access",
+    "Review and approve email copy before campaign launch",
+    "Respond to questions and review requests within 48 hours during the build phase"
+  ],
+
+  "generate_proposal": true,
+  "generate_contract": false,
+  "generate_invoice": false,
+  "output_dir": "/Users/macbook/Documents/new workflows/APsystems/clients/BayfordBridge",
+  "client_name_sanitized": "BayfordBridge",
+
+  "provider_company": "AP Systems",
+  "provider_name": "Onuora Adiorah",
+  "provider_address": "599 Stuyvesant Avenue, Irvington, New Jersey",
+  "provider_email": "adiorahonuora@gmail.com",
+  "provider_phone": "(862) 255-9789"
+}

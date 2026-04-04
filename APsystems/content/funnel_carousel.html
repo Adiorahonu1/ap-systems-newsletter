@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funnel Breakdown Carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --slide-bg: #111111;
+    --accent: #E8FF47;
+    --accent2: #FF4747;
+    --text: #F0F0F0;
+    --muted: #666666;
+    --border: #222222;
+    --w: 540px;
+    --h: 540px;
+  }
+
+  body {
+    background: #050505;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    padding: 40px 20px;
+    gap: 32px;
+  }
+
+  /* ── Viewer shell ── */
+  .viewer {
+    position: relative;
+    width: var(--w);
+    max-width: 100%;
+  }
+
+  .stage {
+    width: var(--w);
+    max-width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  /* ── Slides ── */
+  .slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* shared inner padding */
+  .slide-inner {
+    padding: 44px 48px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* corner label */
+  .slide-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: auto;
+  }
+
+  .brand-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ════════════════════════
+     SLIDE 1 — HOOK
+  ════════════════════════ */
+  .s1 { background: var(--accent); }
+  .s1 .slide-num { color: rgba(0,0,0,0.4); }
+  .s1 .brand-tag { color: rgba(0,0,0,0.4); }
+
+  .s1 .hook-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+  }
+
+  .s1 .hook-head {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 0.95;
+    color: #0a0a0a;
+    letter-spacing: 0.01em;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .s1 .hook-sub {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(0,0,0,0.65);
+    line-height: 1.5;
+    max-width: 380px;
+    margin-bottom: 8px;
+  }
+
+  /* ════════════════════════
+     STAT SLIDES (2–5)
+  ════════════════════════ */
+  .stat-slide { background: var(--slide-bg); }
+
+  .stat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .step-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--border);
+    color: var(--muted);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  .step-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .big-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 118px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .big-number .unit {
+    font-size: 52px;
+    margin-bottom: 8px;
+    margin-left: 2px;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  .stat-equation {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .stat-insight {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.55;
+    max-width: 380px;
+  }
+
+  .stat-insight strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* divider bar */
+  .bar {
+    width: 48px;
+    height: 3px;
+    background: var(--accent);
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  /* LEAK SLIDE — red accent */
+  .leak-slide { background: #140808; }
+  .leak-slide .big-number { color: var(--accent2); }
+  .leak-slide .big-number .unit { color: var(--accent2); }
+  .leak-slide .stat-insight strong { color: var(--accent2); }
+  .leak-slide .bar { background: var(--accent2); }
+  .leak-slide .step-pill { background: rgba(255,71,71,0.15); color: var(--accent2); }
+
+  .leak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,71,71,0.12);
+    border: 1px solid rgba(255,71,71,0.3);
+    color: var(--accent2);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .leak-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: blink 1.2s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  /* ════════════════════════
+     SLIDE 6 — END TO END
+  ════════════════════════ */
+  .s6 { background: #0a0a0a; }
+
+  .funnel-visual {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .funnel-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .funnel-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    width: 100px;
+    flex-shrink: 0;
+  }
+
+  .funnel-bar-wrap {
+    flex: 1;
+    height: 28px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .funnel-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: width 0.6s ease;
+  }
+
+  .funnel-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #0a0a0a;
+    white-space: nowrap;
+  }
+
+  .s6 .bottom-note {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  /* ════════════════════════
+     SLIDE 7 — INSIGHT
+  ════════════════════════ */
+  .s7 { background: var(--slide-bg); }
+
+  .insight-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .insight-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .icon-green { background: rgba(232,255,71,0.12); }
+  .icon-red   { background: rgba(255,71,71,0.12); }
+  .icon-blue  { background: rgba(71,147,255,0.12); }
+  .icon-gold  { background: rgba(255,190,71,0.12); }
+
+  .insight-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .insight-text span {
+    font-weight: 600;
+  }
+
+  .insight-text .sub {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  /* ════════════════════════
+     SLIDE 8 — CTA
+  ════════════════════════ */
+  .s8 { background: var(--slide-bg); }
+
+  .s8 .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .s8 .cta-head {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 0.95;
+    color: var(--text);
+    letter-spacing: 0.01em;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .s8 .cta-head em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .cta-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent);
+    color: #0a0a0a;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .cta-action .arrow { font-size: 16px; }
+
+  /* ── Navigation ── */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+  .nav-btn:disabled:hover { background: #1a1a1a; color: var(--text); border-color: var(--border); }
+
+  .dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .dot.active { background: var(--accent); width: 20px; border-radius: 3px; }
+
+  /* ── Export hint ── */
+  .hint {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .nav, .hint { display: none; }
+    .stage { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="viewer">
+  <div class="stage" id="stage">
+    <div class="slides" id="slides">
+
+      <!-- ════ SLIDE 1 — Hook ════ -->
+      <div class="slide s1">
+        <div class="slide-inner">
+          <div class="slide-num">01 / 08</div>
+          <div class="hook-label">Case Study &nbsp;·&nbsp; AP Systems</div>
+          <div class="hook-head">We called<br>2,000<br>people.</div>
+          <div class="hook-sub">Here is exactly what happened at every step of the funnel. One round of calls. No fluff, just numbers.</div>
+          <div class="brand-tag">AP Systems &nbsp;·&nbsp; 2026</div>
+        </div>
+      </div>
+
+      <!-- ════ SLIDE 2 — Pick-Up Rate ════ -->
+      <div class="slide stat-slide">
+        <div class="slide-inner">
+          <div class="slide-num">02 / 08</div>
+          <div class="stat-header">
+            <div class="step-pill">Step 01</div>
+            <div class="step-title">Pick-Up Rate</div>
+          </div>
+          <div class="big-number">7.5<span class="unit">%</span></div>
+          <div class="bar"></div>
+          <div class="stat-equation">150 answered &nbsp;/&nbsp; 2,000 called</div>
+          <div class="stat-insight">This is the contact rate. For a dormant client list with <strong>no prior engagement</strong>, reaching 1 in 13 is expected. The list was cold.</div>
+        </div>
+      </div>
+
+      <!-- ════ SLIDE 3 — Booking Rate ════ -->
+      <div class="slide stat-slide">
+        <div class="slide-inner">
+          <div class="slide-num">03 / 08</div>
+          <div class="stat-header">
+            <div class="step-pill">Step 02</div>
+            <div class="step-title">Booking Rate</div>
+          </div>
+          <div class="big-number">50.6<span class="unit">%</span></div>
+          <div class="bar"></div>
+          <div class="stat-equation">76 booked &nbsp;/&nbsp; 150 who picked up</div>
+          <div class="stat-insight">Over <strong>half the people reached booked an appointment.</strong> The AI script was converting. The offer was landing. This part was working.</div>
+        </div>
+      </div>
+
+      <!-- ════ SLIDE 4 — Show-Up Rate (LEAK) ════ -->
+      <div class="slide leak-slide">
+        <div class="slide-inner">
+          <div class="slide-num">04 / 08</div>
+          <div class="leak-badge">Biggest Leak</div>
+          <div class="stat-header">
+            <div class="step-pill">Step 03</div>
+            <div class="step-title">Show-Up Rate</div>
+          </div>
+          <div class="big-number">26.3<span class="unit">%</span></div>
+          <div class="bar" style="background:var(--accent2)"></div>
+          <div class="stat-equation">20 showed &nbsp;/&nbsp; 76 booked</div>
+          <div class="stat-insight"><strong>This is where the money was left on the table.</strong> 56 people booked and never came. The reminder sequence needed fixing.</div>
+        </div>
+      </div>
+
+      <!-- ════ SLIDE 5 — Close Rate ════ -->
+      <div class="slide stat-slide">
+        <div class="slide-inner">
+          <div class="slide-num">05 / 08</div>
+          <div class="stat-header">
+            <div class="step-pill">Step 04</div>
+            <div class="step-title">Close Rate</div>
+          </div>
+          <div class="big-number">25<span class="unit">%</span></div>
+          <div class="bar"></div>
+          <div class="stat-equation">5 closed &nbsp;/&nbsp; 20 who showed</div>
+          <div class="stat-insight">1 in 4 who showed up closed. <strong>The human side of the sale was solid.</strong> This number does not need fixing, it needs more shows to feed it.</div>
+        </div>
+      </div>
+
+      <!-- ════ SLIDE 6 — Full Funnel ════ -->
+      <div class="slide s6">
+        <div class="slide-inner">
+          <div class="slide-num">06 / 08</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Full Funnel</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--text);letter-spacing:0.01em;margin-bottom:4px;">5 sales from 2,000 contacts</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;background:rgba(232,255,71,0.08);padding:5px 12px;border-radius:3px;width:fit-content;">From a single round of calls</div>
+
+          <div class="funnel-visual">
+            <div class="funnel-row">
+              <div class="funnel-label">Contacted</div>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" style="width:100%;background:#2a2a2a;">
+                  <span class="funnel-val" style="color:var(--muted)">2,000</span>
+                </div>
+              </div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-label">Picked Up</div>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" style="width:7.5%;background:var(--accent);">
+                  <span class="funnel-val">150</span>
+                </div>
+              </div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-label">Booked</div>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" style="width:3.8%;background:var(--accent);">
+                  <span class="funnel-val">76</span>
+                </div>
+              </div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-label">Showed</div>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" style="width:1%;background:var(--accent2);">
+                  <span class="funnel-val" style="color:#0a0a0a">20</span>
+                </div>
+              </div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-label">Closed</div>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" style="width:0.4%;background:var(--accent2);">
+                  <span class="funnel-val" style="color:#0a0a0a">5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="s6 bottom-note">End-to-end conversion: <strong style="color:var(--accent)">0.25%</strong> &nbsp;·&nbsp; Most people see this and think it failed. They are wrong.</div>
+        </div>
+      </div>
+
+      <!-- ════ SLIDE 7 — What It Means ════ -->
+      <div class="slide s7">
+        <div class="slide-inner">
+          <div class="slide-num">07 / 08</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--text);letter-spacing:0.01em;margin-bottom:28px;">What the<br>numbers tell you</div>
+
+          <div class="insight-list">
+            <div class="insight-item">
+              <div class="insight-icon icon-blue">📞</div>
+              <div class="insight-text">
+                <span>7.5% pick-up rate</span>
+                <span class="sub">The list is cold. Fix the warm-up sequence before the next run.</span>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-icon icon-green">📅</div>
+              <div class="insight-text">
+                <span>50.6% booking rate</span>
+                <span class="sub">The offer and script are working. Do not touch them.</span>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-icon icon-red">⚠️</div>
+              <div class="insight-text">
+                <span>26.3% show-up rate</span>
+                <span class="sub">This is the leak. Fix reminders, add pre-call sequences.</span>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-icon icon-gold">💰</div>
+              <div class="insight-text">
+                <span>25% close rate</span>
+                <span class="sub">The human is doing the job. Feed it more shows.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ SLIDE 8 — CTA ════ -->
+      <div class="slide s8">
+        <div class="slide-inner">
+          <div class="slide-num">08 / 08</div>
+          <div class="s8 cta-label">AP Systems</div>
+          <div class="s8 cta-head">Know<br>where<br>your <em>money</em><br>is leaking.</div>
+          <div class="cta-action">
+            DM me &nbsp; <span class="arrow">→</span>
+          </div>
+          <div class="brand-tag">We map the funnel. We fix the leak.</div>
+        </div>
+      </div>
+
+    </div><!-- /slides -->
+  </div><!-- /stage -->
+</div><!-- /viewer -->
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nav-btn" id="prevBtn" onclick="go(-1)" disabled>←</button>
+  <div class="dots" id="dots"></div>
+  <button class="nav-btn" id="nextBtn" onclick="go(1)">→</button>
+</div>
+
+<div class="hint">← → arrow keys to navigate &nbsp;·&nbsp; Screenshot each slide for LinkedIn</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const slidesEl = document.getElementById('slides');
+  const dotsEl = document.getElementById('dots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    slidesEl.style.transform = `translateX(-${current * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+  }
+
+  function go(dir) { goTo(current + dir); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+</script>
+</body>
+</html>
